@@ -4,12 +4,8 @@ import org.bukkit.entity.Player;
 
 import com.packageing.tools.packagetools.entitys.ArmorStand;
 
-import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
-import net.minecraft.network.protocol.game.PacketPlayOutEntityEquipment;
-import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
-import net.minecraft.network.protocol.game.PacketPlayOutEntityTeleport;
-import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntityLiving;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import net.minecraft.network.protocol.game.*;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 
 
 public class PackageManager {
@@ -17,36 +13,37 @@ public class PackageManager {
 	public static void SendSpawnPackage(ArmorStand stand, Player p) {
 		PacketPlayOutSpawnEntityLiving spawn = new PacketPlayOutSpawnEntityLiving(stand.getEntity());
 //        PacketPlayOutEntityEquipment equip = new PacketPlayOutEntityEquipment(stand.getId(), EnumItemSlot.HEAD, CraftItemStack.asNMSCopy(new ItemStack(m)));
-		PacketPlayOutEntityEquipment equip = new PacketPlayOutEntityEquipment(stand.getEntity().getId(), stand.getEquipmentList());
-		PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(stand.getEntity().getId(), stand.getEntity().getDataWatcher(), true);
-        ((CraftPlayer)p).getHandle().b.sendPacket(spawn);
-        ((CraftPlayer)p).getHandle().b.sendPacket(equip);
-        ((CraftPlayer)p).getHandle().b.sendPacket(metadata);
+		PacketPlayOutEntityEquipment equip = new PacketPlayOutEntityEquipment(stand.getEntityID(), stand.getEquipmentList());//net.minecraft.world.entity.decoration.EntityArmorStand
+		PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(stand.getEntityID(), stand.getEntity().ai(), true);
+        ((CraftPlayer)p).getHandle().b.a(spawn);
+        ((CraftPlayer)p).getHandle().b.a(equip);
+        ((CraftPlayer)p).getHandle().b.a(metadata);
 	}
 	
 	public static void SendDespawnPackage(ArmorStand stand, Player p) {
 		PacketPlayOutEntityDestroy destroy = new PacketPlayOutEntityDestroy(stand.getEntityID());
-		((CraftPlayer)p).getHandle().b.sendPacket(destroy);
+		((CraftPlayer)p).getHandle().b.a(destroy);
 	}
 	
 	public static void SendDespawnPackage(int standID, Player p) {
+		//net.minecraft.server.network.PlayerConnection
 		PacketPlayOutEntityDestroy destroy = new PacketPlayOutEntityDestroy(standID);
-		((CraftPlayer)p).getHandle().b.sendPacket(destroy);
+		((CraftPlayer)p).getHandle().b.a(destroy);
 	}
 	
 	public static void SendUpdate(ArmorStand stand, Player p) {
 //      PacketPlayOutEntityEquipment equip = new PacketPlayOutEntityEquipment(stand.getId(), EnumItemSlot.HEAD, CraftItemStack.asNMSCopy(new ItemStack(m)));
-		PacketPlayOutEntityEquipment equip = new PacketPlayOutEntityEquipment(stand.getEntity().getId(), stand.getEquipmentList());
-		PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(stand.getEntity().getId(), stand.getEntity().getDataWatcher(), true);
-        ((CraftPlayer)p).getHandle().b.sendPacket(equip);
-		((CraftPlayer)p).getHandle().b.sendPacket(metadata);
+		PacketPlayOutEntityEquipment equip = new PacketPlayOutEntityEquipment(stand.getEntityID(), stand.getEquipmentList());
+		PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(stand.getEntityID(), stand.getEntity().ai(), true);
+        ((CraftPlayer)p).getHandle().b.a(equip);
+		((CraftPlayer)p).getHandle().b.a(metadata);
 	}
 	
 	public static void SendTeleport(ArmorStand stand, Player p) {
-		PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(stand.getEntity().getId(), stand.getEntity().getDataWatcher(), true);
+		PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(stand.getEntityID(), stand.getEntity().ai(), true);
         PacketPlayOutEntityTeleport telport = new PacketPlayOutEntityTeleport(stand.getEntity());
-		((CraftPlayer)p).getHandle().b.sendPacket(metadata);
-		((CraftPlayer)p).getHandle().b.sendPacket(telport);
+		((CraftPlayer)p).getHandle().b.a(metadata);
+		((CraftPlayer)p).getHandle().b.a(telport);
 	}
 	
 //	public static void SendBlockChangePackage(Block block, Material m, Player p) {

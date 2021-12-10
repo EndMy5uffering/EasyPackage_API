@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_18_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
@@ -35,7 +35,7 @@ public class ArmorStand extends PackageEntity<EntityArmorStand> {
 	
 	public ArmorStand(EntityArmorStand entity) {
 		super(entity);
-		this.entityID = entity.getId();
+		this.entityID = entity.ae();
 	}
 	
 	public static ArmorStand CreateArmorStand(Location location,float headRotationX, float headRotationY, float headRotationZ, float rotBody) {
@@ -69,23 +69,23 @@ public class ArmorStand extends PackageEntity<EntityArmorStand> {
 		this.headX = x;
 		this.headY = y;
 		this.headZ = z;
-		this.getEntity().setHeadPose(new Vector3f(x,y,z));
+		this.getEntity().a(new Vector3f(x,y,z));
 	}
 	
 	public void setLocation(double x, double y, double z) {
 		this.locationX = x;
 		this.locationY = y;
 		this.locationZ = z;
-		this.getEntity().setLocation(x, y, z, this.bodyRotation, 0);
+		this.getEntity().a(x, y, z, this.bodyRotation, 0);
 	}
 	
 	public void setCustomName(String text) {
 		ChatComponentText standName = new ChatComponentText(text);
-        this.getEntity().setCustomName(standName);
+        this.getEntity().a(standName);
 	}
 	
 	public void setCustomNameVisible(boolean visible) {
-		this.getEntity().setCustomNameVisible(visible);
+		this.getEntity().n(visible);
 	}
 
 	public double getLocationX() {
@@ -105,35 +105,35 @@ public class ArmorStand extends PackageEntity<EntityArmorStand> {
 	}
 
 	public boolean isSmall() {
-		return this.getEntity().isSmall();
+		return this.getEntity().n();
 	}
 
 	public void setSmall(boolean isSmall) {
-		this.getEntity().setSmall(isSmall);
+		this.getEntity().a(isSmall);
 	}
 
 	public boolean hasBasePlate() {
-		return this.getEntity().hasBasePlate();
+		return this.getEntity().r();
 	}
 
 	public void setHasBasePlate(boolean hasBasePlate) {
-		this.getEntity().setBasePlate(hasBasePlate);
+		this.getEntity().s(hasBasePlate);
 	}
 
 	public boolean hasGravity() {
-		return this.getEntity().isNoGravity();
+		return this.getEntity().aM();
 	}
 
 	public void setHasGravity(boolean hasGravity) {
-		this.getEntity().setNoGravity(hasGravity);
+		this.getEntity().e(hasGravity);
 	}
 
 	public boolean isInvisible() {
-		return this.getEntity().isInvisible();
+		return this.getEntity().bU();
 	}
 
 	public void setInvisible(boolean isInvisible) {
-		this.getEntity().setInvisible(isInvisible);
+		this.getEntity().j(isInvisible);
 	}
 
 	public float getHeadX() {
