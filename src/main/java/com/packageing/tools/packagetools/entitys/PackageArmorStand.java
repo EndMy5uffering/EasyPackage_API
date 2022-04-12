@@ -86,12 +86,13 @@ public class PackageArmorStand extends PackageEntity{
 		metadata.setObject(getWatcherObject(2, WrappedDataWatcher.Registry.getChatComponentSerializer(true)), opt);
 		metadata.setObject(getWatcherObject(3, WrappedDataWatcher.Registry.get(Boolean.class)), this.customNameVisible);
 		int mask = 0;
-		if(isSmall) mask &= 0x01;
-		if(hasArms) mask &= 0x04;
-		if(basePlateHidden) mask &= 0x08;
-		if(isMarker) mask &= 0x10;
+		if(isSmall) mask |= 0x01;
+		if(hasArms) mask |= 0x04;
+		if(basePlateHidden) mask |= 0x08;
+		if(isMarker) mask |= 0x10;
 		metadata.setObject(getWatcherObject(15, WrappedDataWatcher.Registry.get(Byte.class)), (byte) (mask));
 		WrappedDataWatcher.Serializer serializer = WrappedDataWatcher.Registry.getVectorSerializer();
+		metadata.setObject(8, serializer, toV3f(new Vector(0, yaw, 0)));
 		metadata.setObject(16, serializer, toV3f(this.getHeadRotation()));
 		metadata.setObject(17, serializer, toV3f(this.getBodyRotation()));
 		metadata.setObject(18, serializer, toV3f(this.getLeftArmRotation()));
