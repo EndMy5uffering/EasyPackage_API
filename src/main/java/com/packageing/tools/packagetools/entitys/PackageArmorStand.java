@@ -41,6 +41,8 @@ public class PackageArmorStand extends PackageEntity{
 	private boolean hasArms = true;
 	private final int entityID;
 	private UUID uuid = null;
+	private int pitch = 0;
+	private int yaw = 0;
 
 	public PackageArmorStand(int id) {
         this.entityID = id;
@@ -64,6 +66,9 @@ public class PackageArmorStand extends PackageEntity{
         packet.getDoubles().write(0, this.location.getX());
         packet.getDoubles().write(1, this.location.getY());
         packet.getDoubles().write(2, this.location.getZ());
+
+		packet.getIntegers().write(0, pitch);
+        packet.getIntegers().write(1, yaw);
 
 		return packet;
 	}
@@ -272,7 +277,11 @@ public class PackageArmorStand extends PackageEntity{
 	}
 
 	public void setHeadRotation(double x, double y, double z) {
-		this.headRotation = new Vector(x, y, z);
+		setHeadRotation(new Vector(x, y, z));
+	}
+
+	public void setHeadRotation(Vector v) {
+		this.headRotation = v;
 	}
 
 	public Vector getLeftArmRotation() {
@@ -280,7 +289,11 @@ public class PackageArmorStand extends PackageEntity{
 	}
 
 	public void setLeftArmRotation(double x, double y, double z) {
-		this.leftArmRotation = new Vector(x, y, z);
+		setLeftArmRotation(new Vector(x, y, z));
+	}
+
+	public void setLeftArmRotation(Vector v) {
+		this.leftArmRotation = v;
 	}
 
 	public Vector getRightArmRotation() {
@@ -288,7 +301,11 @@ public class PackageArmorStand extends PackageEntity{
 	}
 
 	public void setRightArmRotation(double x, double y, double z) {
-		this.rightArmRotation = new Vector(x, y, z);
+		setRightArmRotation(new Vector(x, y, z));
+	}
+
+	public void setRightArmRotation(Vector v) {
+		this.rightArmRotation = v;
 	}
 
 	public Vector getLeftLegRotation() {
@@ -296,7 +313,11 @@ public class PackageArmorStand extends PackageEntity{
 	}
 
 	public void setLeftLegRotation(double x, double y, double z) {
-		this.leftLegRotation = new Vector(x, y, z);
+		setLeftLegRotation(new Vector(x, y, z));
+	}
+
+	public void setLeftLegRotation(Vector v) {
+		this.leftLegRotation = v;
 	}
 
 	public Vector getRightLegRotation() {
@@ -304,7 +325,27 @@ public class PackageArmorStand extends PackageEntity{
 	}
 
 	public void setRightLegRotation(double x, double y, double z) {
-		this.rightLegRotation = new Vector(x, y, z);
+		setRightLegRotation(new Vector(x, y, z));
+	}
+
+	public void setRightLegRotation(Vector v) {
+		this.rightLegRotation = v;
+	}
+
+	public int getPitch(){
+		return this.pitch;
+	}
+
+	public int getYaw(){
+		return this.yaw;
+	}
+
+	public void setPitch(int pitch){
+		this.pitch = pitch;
+	}
+
+	public void setYaw(int yaw){
+		this.yaw = yaw;
 	}
 
 }
