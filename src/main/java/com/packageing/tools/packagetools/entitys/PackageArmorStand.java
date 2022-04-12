@@ -117,11 +117,11 @@ public class PackageArmorStand extends PackageEntity{
 	public List<Pair<ItemSlot, ItemStack>> getSlotMaterials(){
 		List<Pair<ItemSlot,ItemStack>> matList = new ArrayList<>();
 		if(this.headMaterial != null) matList.add(new Pair<>(ItemSlot.HEAD, this.headMaterial));
-		if(this.bodyMaterial != null) matList.add(new Pair<>(ItemSlot.HEAD, this.bodyMaterial));
-		if(this.mainHand != null) matList.add(new Pair<>(ItemSlot.HEAD, this.mainHand));
-		if(this.offHand != null) matList.add(new Pair<>(ItemSlot.HEAD, this.offHand));
-		if(this.legMaterial != null) matList.add(new Pair<>(ItemSlot.HEAD, this.legMaterial));
-		if(this.feetMaterial != null) matList.add(new Pair<>(ItemSlot.HEAD, this.feetMaterial));
+		if(this.bodyMaterial != null) matList.add(new Pair<>(ItemSlot.CHEST, this.bodyMaterial));
+		if(this.mainHand != null) matList.add(new Pair<>(ItemSlot.MAINHAND, this.mainHand));
+		if(this.offHand != null) matList.add(new Pair<>(ItemSlot.OFFHAND, this.offHand));
+		if(this.legMaterial != null) matList.add(new Pair<>(ItemSlot.LEGS, this.legMaterial));
+		if(this.feetMaterial != null) matList.add(new Pair<>(ItemSlot.FEET, this.feetMaterial));
 		return matList;
 	}
 	
