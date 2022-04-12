@@ -67,8 +67,8 @@ public class PackageArmorStand extends PackageEntity{
         packet.getDoubles().write(1, this.location.getY());
         packet.getDoubles().write(2, this.location.getZ());
 
-		packet.getIntegers().write(2, pitch);
-        packet.getIntegers().write(3, yaw);
+		packet.getIntegers().write(3, pitch);
+        packet.getIntegers().write(4, yaw);
 
 		return packet;
 	}
