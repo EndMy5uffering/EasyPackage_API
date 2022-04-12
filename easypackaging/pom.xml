@@ -6,8 +6,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
 
     <settings.name>easypackaging</settings.name>
     <settings.spigotVersion>1.18.2-R0.1-SNAPSHOT</settings.spigotVersion>
